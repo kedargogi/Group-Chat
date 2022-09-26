@@ -30,6 +30,12 @@ app.use(messageRoute)
 app.use(groupRoute)
 app.use(adminRoute)
 
+app.use((req, res)=>{
+    //console.log('url: ', req.url)
+    res.sendFile(path.join(__dirname, `public/${req.url}`));
+  })
+  
+
 // Association
 
 User.hasMany(Message);
